@@ -10,9 +10,25 @@ import UIKit
 import ARKit
 
 class EmojiStickerViewController: UIViewController {
+    let noses = ["🍆", "🐽", "💧", " ", "🎈", "👃"]
 
     @IBOutlet var sceneView: ARSCNView!
     
+    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+        // get the location of the tap within the bounds
+        let location = sender.location(in: sceneView)
+        
+        // returns a list of object tapped on from the hit test
+        let results = sceneView.hitTest(location, options: nil)
+        
+        // get the first result and enure that is it an emoji node
+        if let result = results.first,
+            let node = result.node as? EmojiNode {
+            
+            // switch the emoji node
+            node.next()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +38,8 @@ class EmojiStickerViewController: UIViewController {
         }
         
         sceneView.delegate = self
+        
+        //sceneView.scene.background.contents = UIColor.black
         
         // Do any additional setup after loading the view.
     }
@@ -49,8 +67,9 @@ class EmojiStickerViewController: UIViewController {
 extension EmojiStickerViewController: ARSCNViewDelegate{
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         //ensures that a device with metal/scenekit is being used
-        guard let device = sceneView.device else {
-            return nil
+        guard let faceAnchor = anchor as? ARFaceAnchor,
+            let device = sceneView.device else {
+                return nil
         }
         //creates face geometry
         let faceGeometry = ARSCNFaceGeometry(device: device)
@@ -58,7 +77,20 @@ extension EmojiStickerViewController: ARSCNViewDelegate{
         let node = SCNNode(geometry: faceGeometry)
         //set fill mode of node's material
         node.geometry?.firstMaterial?.fillMode = .lines
+        
+        
+        node.geometry?.firstMaterial?.transparency = 0.0
+        
+        
+        let noseNode = EmojiNode(with: noses)
+        noseNode.name = "nose"
+        
+        node.addChildNode(noseNode)
+        
+        updateFeatures(for: node, using: faceAnchor)
+        
         return node
+        
     }
     
     //function is called to delegate the rendering when node updates
@@ -68,6 +100,18 @@ extension EmojiStickerViewController: ARSCNViewDelegate{
             return
         }
         faceGeometry.update(from: faceAnchor.geometry)
+        updateFeatures(for: node, using: faceAnchor)
+    }
+    
+    func updateFeatures(for node: SCNNode, using anchor: ARFaceAnchor) {
+        //seach node for a child named "nose"
+        let child = node.childNode(withName: "nose", recursively: false) as? EmojiNode
+        
+        //geometry has an array of verticies, index 9 happens to be the nose vertex
+        let vertices = [anchor.geometry.vertices[9]]
+        
+        child?.updatePosition(for: vertices)
+        
     }
 }
 
