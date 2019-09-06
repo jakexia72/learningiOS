@@ -39,7 +39,7 @@ class EmojiStickerViewController: UIViewController {
         
         sceneView.delegate = self
         
-        //sceneView.scene.background.contents = UIColor.black
+        sceneView.scene.background.contents = UIColor.black
         
         // Do any additional setup after loading the view.
     }
@@ -79,7 +79,7 @@ extension EmojiStickerViewController: ARSCNViewDelegate{
         node.geometry?.firstMaterial?.fillMode = .lines
         
         
-        node.geometry?.firstMaterial?.transparency = 0.0
+//        node.geometry?.firstMaterial?.transparency = 0.0
         
         
         let noseNode = EmojiNode(with: noses)
