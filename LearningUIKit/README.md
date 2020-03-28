@@ -27,3 +27,25 @@ struct ContentView: View {
     - Can be nested
 - Spacer: Place between elements to dynamcially space them apart
 - padding: Adds some space around the element (like in css)
+
+### Custom Views
+
+#### Image View
+
+```
+struct CircleImage: View {
+    var body: some View {
+    Image("location")
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .clipShape(Circle())
+    }
+}
+```
+- `.resizable()` allows it to resize to fit space
+    - This can cause it the aspect ratio to shift
+- Use `.aspectRatio(contentMode: )` to specify aspect ratio
+- Can use `.clipshape(shape:)` to clip the image
+
+
+

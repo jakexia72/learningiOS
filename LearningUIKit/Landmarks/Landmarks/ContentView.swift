@@ -10,22 +10,32 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("This Is a Title")
-            .font(.title)
-            .fontWeight(.bold)
-            .foregroundColor(.green)
-            //Spacer()
-            HStack {
-                Text("This is a Subtitle")
-                    .font(.subheadline)
-                Spacer()
-                Text("Other Info")
-                    .font(.subheadline)
+        VStack {
+            MapView()
+                .frame(height:300)
+                .edgesIgnoringSafeArea(.top)
+            CircleImage()
+                .frame(height: 300)
+                .offset(y: -130)
+                .padding(.bottom, -130)
+            VStack(alignment: .leading) {
+                Text("This Is a Title")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.green)
+                //Spacer()
+                HStack {
+                    Text("This is a Subtitle")
+                        .font(.subheadline)
+                    Spacer()
+                    Text("Other Info")
+                        .font(.subheadline)
+                }
+                
             }
-            
+            .padding()
+         Spacer()
         }
-        .padding()
     }
 }
 
