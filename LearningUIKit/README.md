@@ -27,6 +27,12 @@ struct ContentView: View {
     - Can be nested
 - Spacer: Place between elements to dynamcially space them apart
 - padding: Adds some space around the element (like in css)
+- `.frame(height: 300)` can but used to specify a frame and set size
+- `.offset(y: -130)` shifts up by 130 pts. 
+
+#### Summary
+- Declare view's layout in body
+- Use stacks to combine views
 
 ### Custom Views
 
@@ -48,4 +54,22 @@ struct CircleImage: View {
 - Can use `.clipshape(shape:)` to clip the image
 
 
+#### Map View
+```
+import MapKit
+
+struct MapView: UIViewRepresentable {
+    func makeUIView(context: Context) -> MKMapView {
+        MKMapView(frame: .zero)
+    }
+
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: 34.011286, longitude: -116.166868)
+        let span = MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        uiView.setRegion(region, animated: true)
+    }
+}
+```
 
