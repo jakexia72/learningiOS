@@ -1,10 +1,13 @@
 # Swift UI
 
-### Objective
+## Objective
 * Build Simple UIs
 * Get used to using the swiftUI inspector
 
-### Basics
+[Tutorial from Apple](https://developer.apple.com/tutorials/swiftui/building-lists-and-navigation)
+
+--- 
+## Basics
 
 - Views are created in structs
 - Easily modify properties by chaining them
@@ -30,11 +33,9 @@ struct ContentView: View {
 - `.frame(height: 300)` can but used to specify a frame and set size
 - `.offset(y: -130)` shifts up by 130 pts. 
 
-#### Summary
-- Declare view's layout in body
-- Use stacks to combine views
+---
 
-### Custom Views
+## Custom Views
 
 #### Image View
 ```
@@ -52,8 +53,8 @@ struct CircleImage: View {
 - Use `.aspectRatio(contentMode: )` to specify aspect ratio
 - Can use `.clipshape(shape:)` to clip the image
 
-
-#### Map View Example
+---
+#### Map View 
 ```
 import MapKit
 
@@ -71,14 +72,19 @@ struct MapView: UIViewRepresentable {
     }
 }
 ```
-
+---
 #### List View
 - Creates a list that uses a view
+> Instead of specifying a list’s elements individually, you can generate rows directly from a collection.
+- Lists requires <i> identifiable </i> data
+    - Either pass along a property that uniquely identifies each element
+    - or conform to the `Identifiable` protocal
 
 ##### Subview
 ```
 struct LandmarkRow: View {
-    var landmark: Landmark
+    var landmark: Landmark 
+    // ^ conforms to identifiable protocol
     
     var body: some View {
         HStack{
@@ -108,3 +114,8 @@ struct LandmarkList: View {
 - for each landmark in landmarkData, show a new row
 - the list has the ability to scroll without the need to embed in something like a scroll view
 
+---
+
+#### Navigation from list View
+- This works in the format `list` -> `detail`
+- Can embed list into a `NavigationView`, and each row of the list to `NavigationLink`
