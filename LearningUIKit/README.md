@@ -37,7 +37,6 @@ struct ContentView: View {
 ### Custom Views
 
 #### Image View
-
 ```
 struct CircleImage: View {
     var body: some View {
@@ -54,7 +53,7 @@ struct CircleImage: View {
 - Can use `.clipshape(shape:)` to clip the image
 
 
-#### Map View
+#### Map View Example
 ```
 import MapKit
 
@@ -72,4 +71,40 @@ struct MapView: UIViewRepresentable {
     }
 }
 ```
+
+#### List View
+- Creates a list that uses a view
+
+##### Subview
+```
+struct LandmarkRow: View {
+    var landmark: Landmark
+    
+    var body: some View {
+        HStack{
+            landmark.image
+                .resizable()
+                .frame(width: 50, height: 50)
+            Text(landmark.name)
+            Spacer()
+        }
+    }
+}
+``` 
+- This is the subview that the list uses
+- Takes in a Landmark object and creates a row in the list
+
+##### List View
+```
+struct LandmarkList: View {
+    var body: some View {
+        List(landmarkData){ landmark in
+            LandmarkRow(landmark: landmark)
+        }
+    }
+}
+```
+- Pass in the landmarkData array
+- for each landmark in landmarkData, show a new row
+- the list has the ability to scroll without the need to embed in something like a scroll view
 

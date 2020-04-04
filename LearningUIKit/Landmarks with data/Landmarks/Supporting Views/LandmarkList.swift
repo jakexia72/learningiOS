@@ -12,6 +12,7 @@ struct LandmarkList: View {
     var body: some View {
         List(landmarkData){ landmark in
             LandmarkRow(landmark: landmark)
+            CircleImage()
         }
     }
 }
