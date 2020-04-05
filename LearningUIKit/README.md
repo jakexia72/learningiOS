@@ -119,3 +119,21 @@ struct LandmarkList: View {
 #### Navigation from list View
 - This works in the format `list` -> `detail`
 - Can embed list into a `NavigationView`, and each row of the list to `NavigationLink`
+
+```
+struct LandmarkList: View {
+    var body: some View {
+        NavigationView {
+            List(landmarkData){ landmark in
+                NavigationLink(destination: LandmarkDetail()){ 
+                // adds `>` and opens LandmarkDetail view
+                    LandmarkRow(landmark: landmark)
+                }
+            }
+            .navigationBarTitle(Text("Landmarks")) // Sets title
+        }
+
+    }
+}
+
+```
