@@ -138,19 +138,17 @@ struct LandmarkList: View {
 * for each landmark in landmarkData, show a new row
 * the list has the ability to scroll without the need to embed in something like a scroll view
 
-The previous example shows the the use of passing an identifiable array of data into the list directly but that is not the correct way to do it for dynamically shown data or for data shown with mixed views. It instead should be done like such:
+The previous example shows the the use of passing an identifiable array of data into the list directly but that is not the correct way to do it for dynamically shown data or for data shown with mixed views. It instead should be done with a `forEach` like such:
 
 ```
 
 List{
-
-                ForEach(landmarkData){ landmark in
-                    if !self.showFavoritesOnly || landmark.isFavorite {
-                        NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
-                            LandmarkRow(landmark: landmark)
+     ForEach(landmarkData){ landmark in
+        if !self.showFavoritesOnly || landmark.isFavorite {
+            NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
+                LandmarkRow(landmark: landmark)
                         }
                     }
-                    
                 }
             }
             
@@ -227,6 +225,47 @@ struct LandmarkList_Previews: PreviewProvider {
         }
 
 ```
+
+### Using States
+1.  Define a state within the view struct
+``` 
+@State var showFavoritesOnly = true;
+```
+2. Use this state variable to generate the view dynamically
+```
+    if self.showFavoritesOnly {
+        // child view code only shows if self.showFavoritesOnly 
+    }
+```
+3. See `Toggles` in the Interactive UI Elements section below
+
+### Using the `ObservableObject` Protocol
+- Allows for swift to watch for changes to that object and refresh elements that depend on that object!
+- Variables you want to watch for need to be marked with `@Published` within that object
+
+```
+import SwiftUI
+import Combine
+
+final class UserData: ObservableObject {    
+    @Published var showFavouritesOnly = false
+    @Published var landmarks = landmarkData    
+}
+
+```
+---
+
+## Interactive UI Elements
+
+### Toggles
+- to switch states, toggling boolean information
+```
+Toggle(isOn: $showFavoritesOnly){
+    Text("Favorites Only")
+}
+```
+- the `$` will bind `showFavoritesOnly` to that toggle
+- subsequently, if the toggle is `on` then `showFavoritesOnly` is `true`
 
 ---
 
