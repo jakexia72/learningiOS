@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LandmarkList: View {
-    @State var bindingVar = UserData()
-    
     @EnvironmentObject var userData: UserData
     
     var body: some View {
