@@ -242,6 +242,7 @@ struct LandmarkList_Previews: PreviewProvider {
 ### Using the `ObservableObject` Protocol
 - Allows for swift to watch for changes to that object and refresh elements that depend on that object!
 - Variables you want to watch for need to be marked with `@Published` within that object
+- Use this to act as the datastore to easily refresh views
 
 ```
 import SwiftUI
