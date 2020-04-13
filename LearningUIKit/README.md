@@ -270,6 +270,22 @@ Toggle(isOn: $showFavoritesOnly){
 
 ---
 
+## Drawing
+
+### Paths
+- Vector lines 
+- Usually draw by defining points 
+- Usually start at a point and then add lines but there are many ways to draw a path 
+
+### Bézier Paths
+- Curvy paths that are defined by three points, two points plus a control point.
+
+![image](https://lh3.googleusercontent.com/proxy/-u4h7Pmbm3mfddYE3EY5YPCcN3Et4Rr3cyfDJoLBnlypUv-OZPAb6al3tqmdJMudJE03aZd7mfNTSvawOcGUOM9AY3pT3jdpZvhYH8wzRXIoRyKiidHC9jKMlodaQfi2uvQwSfVhZn699ziAqnouOUMPhVCn)
+
+---
+
+
+
 ### Next Steps
 
 * Look into how the json was decoded (potentially very useful) 
