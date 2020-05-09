@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2319501224666EFB006D1D6E /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2319501124666EFB006D1D6E /* CategoryRow.swift */; };
 		2369C657246609760098097D /* CategoryHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2369C656246609760098097D /* CategoryHome.swift */; };
 		B7310DD1229F6839001079B9 /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD0229F6839001079B9 /* HexagonParameters.swift */; };
 		B7310DD3229F6CA9001079B9 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD2229F6CA9001079B9 /* Badge.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		0F836A4725F0F75D937337C5 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = ../Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		1F81038C3765316EB98FA0B4 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		2319501124666EFB006D1D6E /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		2369C656246609760098097D /* CategoryHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHome.swift; sourceTree = "<group>"; };
 		B7310DD0229F6839001079B9 /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
 		B7310DD2229F6CA9001079B9 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				B7394867229F194000C47603 /* SceneDelegate.swift */,
 				B73948A0229F2E1F00C47603 /* LandmarkList.swift */,
 				2369C656246609760098097D /* CategoryHome.swift */,
+				2319501124666EFB006D1D6E /* CategoryRow.swift */,
 				B739489E229F2D9700C47603 /* LandmarkRow.swift */,
 				B7394869229F194000C47603 /* LandmarkDetail.swift */,
 				B7D587B5229F825D006E8DCF /* HikeView.swift */,
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2319501224666EFB006D1D6E /* CategoryRow.swift in Sources */,
 				B7394882229F28B900C47603 /* Data.swift in Sources */,
 				2369C657246609760098097D /* CategoryHome.swift in Sources */,
 				B7310DD3229F6CA9001079B9 /* Badge.swift in Sources */,

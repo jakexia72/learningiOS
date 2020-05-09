@@ -21,7 +21,7 @@ struct CategoryHome: View {
             List{
                 ForEach(categories.keys.sorted(), id: \.self){
                     key in
-                    Text(key)
+                    CategoryRow(categoryName: key, items: self.categories[key]!)
                 }
             }
                 .navigationBarTitle(Text("Featured"))
